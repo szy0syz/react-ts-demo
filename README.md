@@ -37,8 +37,45 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## VS Code sinppets
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```json
+{
+  "Typescript React Function Component": {
+    "prefix": "rh",
+    "body": [
+      "import React from 'react'",
+      "",
+      "interface Props {",
+      "",
+      "}",
+      "export const $1: React.FC<Props> = () => {",
+      "\t\treturn ($2);",
+      "}"
+    ],
+    "description": "Typescript React Function Component"
+  }
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## children
+
+> 有意思，将子组件的属性“反射”出来吗？🤔
+
+```jsx
+export const Counter: React.FC<Props> = ({ children }) => {
+  const [count, setCount] = useState(0);
+  return <div>{children({ count, setCount })}</div>;
+};
+
+
+// App.tsx
+<Counter>
+  {({ count, setCount }) => (
+    <div>
+      {count}
+      <button onClick={() => setCount(count + 1)}> + </button>
+    </div>
+  )}
+</Counter>;
+```

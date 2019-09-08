@@ -2,6 +2,7 @@ import React from 'react';
 import { TextField } from './TextField';
 import logo from './logo.svg';
 import './App.css';
+import { Counter } from './Counter';
 
 const App: React.FC = () => {
   return (
@@ -19,7 +20,16 @@ const App: React.FC = () => {
         <TextField
           handleChange={e => e.target}
           text='ttt'
-          person={{ firstname: 'jerry', lastname: 'shi' }}></TextField>
+          person={{ firstname: 'jerry', lastname: 'shi' }}
+        />
+        <Counter>
+          {({ count, setCount }) => (
+            <div>
+              {count}
+              <button onClick={() => setCount(count + 1)}> + </button>
+            </div>
+          )}
+        </Counter>
       </header>
     </div>
   );
